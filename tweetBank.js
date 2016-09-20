@@ -1,9 +1,9 @@
 var _ = require('lodash');
-
+//
 var data = [];
 
 function add (name, content) {
-  data.push({ name: name, content: content });
+  data.push({ name: name, content: content , ident: data.length});
 }
 
 function list () {
@@ -35,6 +35,6 @@ var getFakeTweet = function() {
 for (var i = 0; i < 10; i++) {
   module.exports.add( getFakeName(), getFakeTweet() );
 }
-console.log(find(function(element){
-	return element.name.indexOf('Nimit') > -1;
-}));
+// console.log(find(function(element){
+// 	return element.name.indexOf('Nimit') > -1;
+// }));
