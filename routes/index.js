@@ -31,11 +31,10 @@ router.post('/tweets', urlencodedParser, function (req, res) {
   if (!req.body) return res.sendStatus(400);
   var name = req.body.name;
   var text = req.body.text;
-  tweetBank.add(name, text);
+  var tweet = tweetBank.add(name, text);
+  router.io.sockets.emit('newTweet', tweet);
   res.redirect('/');
 });
-
-// io.sockets.emit('newTweet', { tweets: tweets });
 
 module.exports = function (io) {
   router.io = io;

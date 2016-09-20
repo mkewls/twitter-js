@@ -91,8 +91,16 @@
     // When 'new_tweet' events are fired, do something with the packaged tweet
     socket.on('newTweet', function (tweet) { 
       console.log(tweet);
-      alert('Refreshing... check the console...');
-      // some logic to add the new tweet to the DOM…
+      // some logic to add the new tweet to the DOM
+      var name = tweet.name;
+      var content = tweet.content;
+      var id = tweet.ident;
+      var newTweet = document.createElement('div');
+      newTweet.className = 'tweetbox';
+      var tweetContent =  "<li><img><div class='content' id='tweet'><div class='by'><a href='/users/" + name + "'>" + name + "</a></div><div>" + content + "</div><div><a href='/tweets/" + id + "'>" + id + "</a></div></div></li>";
+      newTweet.innerHTML = tweetContent;
+      var timeline = document.getElementById("timeline");
+      timeline.appendChild(newTweet);
     }); 
   </script>
 </html>
