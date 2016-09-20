@@ -3,13 +3,33 @@
 {% block content %}
   
   <div class="page-header">
-    <h1>Welcome to Twitter.js!</h1>
+    <h1>Fullstack Twitter.js</h1>
   </div>
   <div class="row">
     <div class="col-md-3">
+      <div>
       <img src="https://pbs.twimg.com/profile_images/2450268678/olxp11gnt09no2y2wpsh_normal.jpeg"><br>
       <b>Kenty Wang</b><br>
       100,000,000 followers
+      </div>
+      <br>
+{% if showForm %}
+    <form action="/tweets" method="POST">
+      <div class="form-group">
+        <label for="name_field">Name:</label>
+        {% if showName %} {% set name = tweets[0].name %} {% endif %}
+        <input name="name" class="form-control" type="text" id="name_field" value="{{name}}" />
+      </div>
+      <div class="form-group">  
+        <label for="text_field">Text:</label>
+        <textarea name="text" class="form-control" id="text_field" rows="3"></textarea>
+      </div>
+      <div class="form-group">  
+        <input type="submit" value="Submit" class="btn btn-primary">
+      </div>
+    </form>
+{% endif %}
+
     </div>
     <div class="col-md-9">
     
@@ -29,5 +49,6 @@
       
     </div>
   </div>
-    
+  
+
 {% endblock %}
